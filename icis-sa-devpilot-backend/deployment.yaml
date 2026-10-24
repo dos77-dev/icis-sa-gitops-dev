@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: icis-sa-devpilot-backend
+  namespace: devpilot-sample-service-prod
+  labels:
+    app: icis-sa-devpilot-backend
+    domain: "icis.sa"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: icis-sa-devpilot-backend
+  template:
+    metadata:
+      labels:
+        app: icis-sa-devpilot-backend
+    spec:
+      containers:
+      - name: app
+        image: nginx:1.27-alpine
+        ports:
+        - containerPort: 80
